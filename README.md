@@ -4,4 +4,4 @@ Compatibility library for use across associated projects. One of the main uses f
 to normalise serialisation across the other AffogatoLang CLI libraries.
 
 
-Javadoc available at [http://affogatolang.github.io/LibCompat/]()
+Javadoc available at [https://affogatolang.github.io/LibCompat/](https://affogatolang.github.io/LibCompat/)
