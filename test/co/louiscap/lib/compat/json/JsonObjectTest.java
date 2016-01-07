@@ -107,6 +107,9 @@ public class JsonObjectTest {
         dislikes.put("films", dislikesFilms);
         
         deepObject.put("dislikes", dislikes);
+        
+        System.out.println();
+        System.out.println("TESTING :: JsonObject");
     }
     
     /**
@@ -165,50 +168,55 @@ public class JsonObjectTest {
     }
 
     /**
-     * Test of getFromDeepIdentifier method, of class JsonObject.
-     * @throws java.lang.Exception
+     * Test for getting an item from one level deep in a JsonObject
+     * @throws co.louiscap.lib.compat.json.JsonObject.JsonTraversalException
      */
     @Test
-    public void testGetFromDeepIdentifierOneLevel() throws Exception {
+    public void testGetFromDeepIdentifierOneLevel() throws JsonObject.JsonTraversalException {
         System.out.println("One Level getFromDeepIdentifier");
         String ident = "name.first";
-        JsonObject instance = deepObject;
+        
         JsonValue expResult = new JsonString("Louis");
-        JsonValue result = instance.getFromDeepIdentifier(ident);
-        System.out.println("Expected " + expResult.toJsonString());
-        System.out.println("Got " + result.toJsonString());
+        JsonValue result = deepObject.getFromDeepIdentifier(ident);
+        
+        System.out.println("\tExpected " + expResult.toJsonString());
+        System.out.println("\tGot " + result.toJsonString());
         assertEquals(expResult, result);
-        System.out.println();
     }
 
-//    /**
-//     * Test of traverseForDeepValue method, of class JsonObject.
-//     */
-//    @Test
-//    public void testTraverseForDeepValue_JsonObject_String() throws Exception {
-//        System.out.println("traverseForDeepValue");
-//        JsonObject obj = null;
-//        String ident = "";
-//        JsonValue expResult = null;
-//        JsonValue result = JsonObject.traverseForDeepValue(obj, ident);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of traverseForDeepValue method, of class JsonObject.
-//     */
-//    @Test
-//    public void testTraverseForDeepValue_JsonObject_StringArr() throws Exception {
-//        System.out.println("traverseForDeepValue");
-//        JsonObject obj = null;
-//        String[] identParts = null;
-//        JsonValue expResult = null;
-//        JsonValue result = JsonObject.traverseForDeepValue(obj, identParts);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    
+    /**
+     * Test for getting an item from root level in a JsonObject
+     * @throws co.louiscap.lib.compat.json.JsonObject.JsonTraversalException
+     */
+    @Test
+    public void testGetFromDeepIdentifierFlat() throws JsonObject.JsonTraversalException {
+        System.out.println("Flat getFromDeepIdentifier");
+        String ident = "name";
+        
+        JsonObject expResult = new JsonObject();
+        expResult.put("first", new JsonString("Louis"));
+        expResult.put("last", new JsonString("Capitanchik"));
+        
+        JsonValue result = deepObject.getFromDeepIdentifier(ident);
+        
+        System.out.println("\tExpected " + expResult.toJsonString());
+        System.out.println("\tGot " + result.toJsonString());
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test for attempting to access a property at a deeper level that can be reached. Should throw
+     * a {@link JsonObject.JsonTraversalException}. This is different than attempting to access a
+     * property that does not exist at a level that can be reached (which should return
+     * {@link JsonValue#NULL})
+     */
+    @Test
+    public void testGetFromDeepIdentifierTraversalError() {
+        System.out.println("Traversal Exception getFromDeepIdentifier");
+        try {
+            deepObject.getFromDeepIdentifier("likes.music.pop");
+            fail("Did not throw Traversal Error for accessing non existant "
+                    + "property");
+        } catch(JsonObject.JsonTraversalException e) {}
+    }
 }

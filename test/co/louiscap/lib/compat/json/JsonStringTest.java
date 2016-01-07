@@ -31,11 +31,18 @@ package co.louiscap.lib.compat.json;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  * @author Louis Capitanchik
  */
 public class JsonStringTest {
+    
+    @BeforeClass
+    public static void setupClass() {
+        System.out.println();
+        System.out.println("TESTING :: JsonString");
+    }
     
     /**
      * Test of toJsonString method, of class JsonString.
