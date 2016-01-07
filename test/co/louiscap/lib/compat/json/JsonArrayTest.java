@@ -29,18 +29,56 @@
  */
 package co.louiscap.lib.compat.json;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- * A collection of tests for the JSON package
- * @author Louis Capitanchik
+ *
+ * @author Louis Capitanchik &lt;contact@louiscap.co&gt;
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    co.louiscap.lib.compat.json.JsonStringTest.class,
-    co.louiscap.lib.compat.json.JsonNumberTest.class,
-    co.louiscap.lib.compat.json.JsonArrayTest.class, 
-    co.louiscap.lib.compat.json.JsonObjectTest.class
-})
-public class JsonTestSuite {}
+public class JsonArrayTest {
+    
+    public JsonArrayTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+        System.out.println();
+        System.out.println("TESTING :: JsonArray");
+    }
+
+    /**
+     * Test of toJsonString method, of class JsonArray.
+     */
+    @Test
+    public void testToJsonString() {
+        System.out.println("toJsonString");
+        
+        JsonArray instance = new JsonArray();
+        instance.add(new JsonString("this"));
+        instance.add(JsonNumber.fromInteger(5));
+        instance.add(JsonValue.TRUE);
+        
+        String expResult = "[\"this\",5,true]";
+        String result = instance.toJsonString();
+        
+        System.out.println("\tExpected " + expResult);
+        System.out.println("\tGot " + result);
+        
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getType method, of class JsonArray.
+     */
+    @Test
+    public void testGetType() {
+        System.out.println("getType");
+        JsonArray instance = new JsonArray();
+        JsonType expResult = JsonType.ARRAY;
+        JsonType result = instance.getType();
+        assertEquals(expResult, result);
+    }
+    
+}
