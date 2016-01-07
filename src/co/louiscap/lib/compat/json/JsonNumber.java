@@ -84,11 +84,39 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
         public DoubleNumber(double src) {
             super(src);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if(o instanceof DoubleNumber) {
+                return val.equals(((DoubleNumber)o).val);
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public int hashCode() {
+            return val.hashCode();
+        }
     }
     
     private static class LongNumber extends JsonNumber<Long> {
         public LongNumber(long src) {
             super(src);
+        }
+        
+        @Override
+        public boolean equals(Object o) {
+            if(o instanceof LongNumber) {
+                return val.equals(((LongNumber)o).val);
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public int hashCode() {
+            return val.hashCode();
         }
     }
 }

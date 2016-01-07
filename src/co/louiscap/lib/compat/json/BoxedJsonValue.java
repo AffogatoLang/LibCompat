@@ -29,6 +29,8 @@
  */
 package co.louiscap.lib.compat.json;
 
+import java.util.Objects;
+
 /**
  * @author Louis Capitanchik
  * @param <T> The native Java type being represented by this JsonValue
@@ -74,4 +76,10 @@ public abstract class BoxedJsonValue<T> implements JsonValue {
     public String toJsonString() {
         return String.valueOf(val);
     }
+    
+    @Override
+    public abstract boolean equals (Object o);
+    
+    @Override
+    public abstract int hashCode();
 }
