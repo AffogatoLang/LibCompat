@@ -119,8 +119,8 @@ public class JsonObject extends HashMap<String, JsonValue> implements JsonValue 
      * into a value that is not a JsonObject (the identifier specifies a key 
      * that cannot be reached).
      */
-    public static JsonValue traverseForDeepValue(JsonObject obj, String ident) throws JsonTraversalException{
-        return traverseForDeepValue(obj, ident.split("."));
+    public static JsonValue traverseForDeepValue(JsonObject obj, String ident) throws JsonTraversalException {
+        return traverseForDeepValue(obj, ident.split("\\."));
     }
     
     /**

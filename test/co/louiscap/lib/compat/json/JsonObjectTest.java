@@ -175,7 +175,10 @@ public class JsonObjectTest {
         JsonObject instance = deepObject;
         JsonValue expResult = new JsonString("Louis");
         JsonValue result = instance.getFromDeepIdentifier(ident);
+        System.out.println("Expected " + expResult.toJsonString());
+        System.out.println("Got " + result.toJsonString());
         assertEquals(expResult, result);
+        System.out.println();
     }
 
 //    /**
