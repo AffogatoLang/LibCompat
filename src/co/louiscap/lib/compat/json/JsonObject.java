@@ -45,7 +45,7 @@ public class JsonObject extends HashMap<String, JsonValue> implements JsonValue 
         s.append("{");
         
         this.entrySet().forEach((e) -> {
-            s.append(e.getKey());
+            s.append(JsonString.asJsonString(e.getKey()));
             s.append(":");
             s.append(e.getValue().toJsonString());
             s.append(",");

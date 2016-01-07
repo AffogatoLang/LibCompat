@@ -52,4 +52,13 @@ public class JsonString extends BoxedJsonValue<String> {
         return JsonType.STRING;
     }
     
+    /**
+     * Converts the given string to a valid JSON String (surrounding it with
+     * double quotes).
+     * @param str The String to convert
+     * @return The String valid as per the JSON spec
+     */
+    public static String asJsonString(String str) {
+        return "\"" + str + "\"";
+    }
 }
