@@ -44,6 +44,11 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
         return JsonType.NUMBER;
     }
     
+    @Override
+    public int hashCode() {
+        return val.hashCode();
+    }
+    
     /**
      * Create a JsonNumber from a primitive double
      * @param src The double to represent as a JsonNumber
@@ -59,7 +64,7 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
      * @return A valid JsonNumber that represents a Float
      */
     public static JsonNumber fromFloat (float src) {
-        return new DoubleNumber(src);
+        return new FloatNumber(src);
     }
     
     /**
@@ -68,7 +73,7 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
      * @return A valid JsonNumber that represents an Integer
      */
     public static JsonNumber fromInteger (int src) {
-        return new LongNumber(src);
+        return new IntNumber(src);
     }
     
     /**
@@ -78,6 +83,21 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
      */
     public static JsonNumber fromLong (long src) {
         return new LongNumber(src);
+    }
+    
+    private static class FloatNumber extends JsonNumber<Float> {
+        public FloatNumber(float src) {
+            super(src);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if(o instanceof FloatNumber) {
+                return val.equals(((FloatNumber)o).val);
+            } else {
+                return false;
+            }
+        }
     }
     
     private static class DoubleNumber extends JsonNumber<Double> {
@@ -93,10 +113,20 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
                 return false;
             }
         }
-
+    }
+    
+    private static class IntNumber extends JsonNumber<Integer> {
+        public IntNumber(int src) {
+            super(src);
+        }
+        
         @Override
-        public int hashCode() {
-            return val.hashCode();
+        public boolean equals(Object o) {
+            if(o instanceof IntNumber) {
+                return val.equals(((IntNumber)o).val);
+            } else {
+                return false;
+            }
         }
     }
     
@@ -112,11 +142,6 @@ public abstract class JsonNumber<T> extends BoxedJsonValue<T> {
             } else {
                 return false;
             }
-        }
-
-        @Override
-        public int hashCode() {
-            return val.hashCode();
         }
     }
 }
