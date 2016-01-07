@@ -60,35 +60,8 @@ public class JsonStringTest {
         JsonType result = instance.getType();
         assertEquals(expResult, result);
     }
-//
-//    /**
-//     * Test of equals method, of class JsonString.
-//     */
-//    @Test
-//    public void testEquals() {
-//        System.out.println("equals");
-//        Object other = null;
-//        JsonString instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.equals(other);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of hashCode method, of class JsonString.
-//     */
-//    @Test
-//    public void testHashCode() {
-//        System.out.println("hashCode");
-//        JsonString instance = null;
-//        int expResult = 0;
-//        int result = instance.hashCode();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    
+    // No test for hashCode and equals because they simply proxy the String methods
 
     /**
      * Test of asJsonString method, of class JsonString.
