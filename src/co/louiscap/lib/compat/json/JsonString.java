@@ -52,6 +52,20 @@ public class JsonString extends BoxedJsonValue<String> {
         return JsonType.STRING;
     }
     
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof JsonString) {
+            return this.val.equals(((JsonString)other).val);
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        return val.hashCode();
+    }
+    
     /**
      * Converts the given string to a valid JSON String (surrounding it with
      * double quotes).
