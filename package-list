@@ -1,3 +1,6 @@
 co.louiscap.lib.compat
+co.louiscap.lib.compat.arrays
+co.louiscap.lib.compat.json
 co.louiscap.lib.compat.lexical
+co.louiscap.lib.compat.output
 co.louiscap.lib.compat.string
