@@ -168,12 +168,13 @@ public class MultiplexedStringPrinter {
     
     /**
      * Gets a subset of the current print streams in this MultiplexedStringPrinter and returns them
-     * wrapped in a new MultiplexedStringPrinter. <br/>
+     * wrapped in a new MultiplexedStringPrinter. <br>
      * For example, if you had a MultiplexedStringPrinter with 15 channels, but only wanted to print 
      * to three labelled "out", "debug" and "file" repeatedly without having to provide the tags every
      * time, you could batch them into their own MultiplexedStringPrinter and call the bare methods
-     * such as {@link print(String)} and {@link flush()} by calling {@code example.getBatch("out", 
-     * "debug", "file")}
+     * such as {@link MultiplexedStringPrinter#print(String)} and 
+     * {@link MultiplexedStringPrinter#flush()} by  calling 
+     * {@code example.getBatch("out", "debug", "file")}
      * @param tags The names of the channels to batch
      * @return A new MultiplexedStringPrinter containing only the specified print streams
      */

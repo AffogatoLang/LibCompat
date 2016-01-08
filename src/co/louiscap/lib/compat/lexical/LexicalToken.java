@@ -98,7 +98,8 @@ public class LexicalToken<T> implements NamedValue<T> {
      * integer, float, long or double will be marked as strings. They will need to be deserialised 
      * separately after the full token has been decoded from a string.
      * @param val The stringValue to turn into a String
-     * @return A String that represents the stringValue and stringValue type of the parameter provided.
+     * @return A String that represents the stringValue and stringValue type of the parameter 
+     * provided.
      */
     protected String valueToString(T val) {
         StringBuilder result = new StringBuilder();
@@ -181,10 +182,11 @@ public class LexicalToken<T> implements NamedValue<T> {
     }
     
     /**
-     * Turns a string into a {@link LexicalToken} as per {@link fromString(java.lang.String)} but 
-     * explicitely returns a LexicalToken instead of a {@link NamedValue}
+     * Turns a string into a {@link LexicalToken} as per 
+     * {@link LexicalToken#fromString(java.lang.String)} but explicitely returns a LexicalToken instead 
+     * of a {@link co.louiscap.lib.compat.NamedValue}
      * @param data A string that represents a LexicalToken, likely created by an invocation of
-     * {@link serialise()}.
+     * {@link LexicalToken#serialise()}.
      * @throws IllegalArgumentException Thrown if the provided data doesn't have the correct token
      * header
      * @return A LexicalToken that represents the provided data
@@ -195,7 +197,8 @@ public class LexicalToken<T> implements NamedValue<T> {
         String type = stream.getUntil(SERIAL_SEP);
         
         if(!type.equals("LexTok")) {
-            throw new IllegalArgumentException("Provided token not of type LexicalToken");
+            throw new IllegalArgumentException("Provided token not of type "
+                    + "LexicalToken");
         }
         
         String tokenName = stream.getUntil(SERIAL_SEP),
@@ -220,10 +223,7 @@ public class LexicalToken<T> implements NamedValue<T> {
             case dtNull:
             default:
                 break;
-        }
-        
+        }   
         return result;
     }
-    
-    
 }

@@ -41,7 +41,7 @@ public class StringChunker {
     /**
      * Create a new instance of StringChunker with the target string as the source for future
      * operations
-     * @param source 
+     * @param source The string that will be split in to chunks
      */
     public StringChunker(String source) {
         this.source = source;
@@ -104,10 +104,10 @@ public class StringChunker {
      * Collects everything at the start of the string until it encounters the given needle, and returns
      * all that has been collected. This version of the method skips over the needle so that the next 
      * action is performed at the end of the target string (analogous to calling
-     * {@link getUntil(String, boolean)} with false as the second parameter). Increments
+     * {@link StringChunker#getUntil(String, boolean)} with false as the second parameter). Increments
      * StringChunker position
      * @param needle The target string to search for. Acts as a delimiter.
-     * @return A {@link String} containing every character in the string until the needle is found. If
+     * @return A {@link java.lang.String} containing every character in the string until the needle is found. If
      * the needle is not found, or it is null, the String will contain every character from the current 
      * position of the chunker until the end of the source String.
      */

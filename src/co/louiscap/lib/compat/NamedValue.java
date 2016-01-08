@@ -63,29 +63,32 @@ public interface NamedValue<T> {
     
     /**
      * Create a string that represents this object, in a format that can be reversed with either 
-     * {@link deserialise(java.lang.String)} or {@link fromString(java.lang.String)}
+     * {@link NamedValue#deserialise(java.lang.String)} or 
+     * {@link NamedValue#fromString(java.lang.String)}
      * @return A string that represents the current state of the NamedValue
      */
     public String serialise();
     
     /**
      * Create a string that represents this object, in a format that can be reversed with either 
-     * {@link deserialise(java.lang.String)} or {@link fromString(java.lang.String)}
+     * {@link NamedValue#deserialise(java.lang.String)} or 
+     * {@link NamedValue#fromString(java.lang.String)}
      * @return A string that represents the current state of the NamedValue
      */
     @Override
     public String toString();
     
     /**
-     * Take a string that represents a NamedValue (presumably created by {@link serialise()} and set 
-     * this NamedValue instance to be equal to it.
+     * Take a string that represents a NamedValue (presumably created by 
+     * {@link NamedValue#serialise()} and set this NamedValue instance to be equal to it.
      * @param data A String that represents a NamedValue of the same type as the implementation
      */
     public void deserialise(String data);
     
     /**
-     * Take a string that represents a NamedValue (presumably created by {@link serialise()} and 
-     * creates a new NamedValue instance (of the same type as the implementation) from it
+     * Take a string that represents a NamedValue (presumably created by 
+     * {@link NamedValue#serialise()} and creates a new NamedValue instance (of the same type as the 
+     * implementation) from it
      * @param data A String that represents a NamedValue of the same type as the implementation
      * @return A new NamedValue that mirrors the provided string data
      */
