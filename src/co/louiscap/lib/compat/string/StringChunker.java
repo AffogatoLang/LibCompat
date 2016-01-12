@@ -107,9 +107,9 @@ public class StringChunker {
      * {@link StringChunker#getUntil(String, boolean)} with false as the second parameter). Increments
      * StringChunker position
      * @param needle The target string to search for. Acts as a delimiter.
-     * @return A {@link java.lang.String} containing every character in the string until the needle is found. If
-     * the needle is not found, or it is null, the String will contain every character from the current 
-     * position of the chunker until the end of the source String.
+     * @return A {@link java.lang.String} containing every character in the string until the needle is 
+     * found. If the needle is not found, or it is null, the String will contain every character from the 
+     * current position of the chunker until the end of the source String.
      */
     public String getUntil(String needle) {
         return getUntil(needle, false);
